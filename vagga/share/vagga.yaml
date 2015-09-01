@@ -1,0 +1,39 @@
+containers:
+  frickelbuntu:
+    setup:
+    - !Ubuntu trusty
+  schuhschachtel1:
+    setup:
+    - !Container frickelbuntu
+    - !Install [nginx]
+    - !Sh "mkdir -p /var/www /etc/nginx"    
+    volumes:
+# Mountpoints müssen bereits existieren! Vagga macht alle flüchtigen Teile nach Ende des setup readonly.
+# als Normalnutzer gehen auch nur nichtprivilegierte Ports...
+# readonly binds gibt es nicht?
+      /var/www: !BindRW /work/data/www 
+      /var/lib/nginx: !BindRW /work/data/lib 
+      /var/log/nginx: !BindRW /work/data/log 
+      /etc/nginx: !BindRW /work/data/etc
+      /run: !Tmpfs
+        size: 10Mi
+      /tmp: !Tmpfs
+        size: 10Mi
+commands:
+  webserver: !Supervise
+    description: Webserverlein starten
+    mode: stop-on-failure
+    children:
+      webserver: !Command
+        container: schuhschachtel1
+        run: |
+          nginx -g "daemon off;"
+# Die Funktionalität von Diensten usw kann nicht genutzt werden, es ist ein extremst schlanker Container ohne aktives init-System
+  webserver-shell: !Command
+    description: Shell in Webserverlein-Containerumgebung starten
+    container: schuhschachtel1
+    run: bash
+  shell-zum-testen: !Command
+    container: frickelbuntu
+    run: bash    
+# wie stoppt man so einen Prozess sauber?

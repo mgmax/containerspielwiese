@@ -1,0 +1,9 @@
+@dein-PC mit virtualbox installiert
+
+vagrant up
+vagrant ssh # into the machine
+cd vagga # this is a not-synchronized copy of the folder in this git repo. Unfortunately vagga doesn't work on virtualbox shared folders.
+vagga # list of commands
+vagga shell-zum-testen
+# TODO Webserver zum Funktionieren bringen - Configdateien aus git usw...
+

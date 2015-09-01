@@ -1,0 +1,9 @@
+# @vagrant-lxc-host-vm
+# Starten dieser "VM":
+
+sudo -i
+cd /share/webserver
+vagrant up --provider=lxc
+curl localhost
+vagrant ssh # Verbindung zum Client
+pstree # angucken, wie nginx unterhalb von init unterhalb von init läuft :)

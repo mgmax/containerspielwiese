@@ -1,0 +1,6 @@
+Tests mit vagga und vagrant-lxc
+
+Ziel:
+- nginx Webserver zum Laufen bringen
+- Webroot und Config aus diesem git repo verwenden
+- Fehler diagnostizieren können (log), wenn man die Config bewusst kaputtmacht
