@@ -8,3 +8,10 @@ Ziel:
 Status:
 - vagrant-lxc geht prinzipiell, was noch fehlt wäre nicht so interessant
 - vagga ist hartnäckiger, lässt sich irgendwie nicht durch virtualbox shared folder hindurch gescheit verwenden :(
+
+Loslegen:
+- apt-get install vagrant virtualbox
+- cd vagrant-lxc
+- cat README
+- cd ../vagga
+- cat README
