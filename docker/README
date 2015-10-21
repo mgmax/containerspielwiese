@@ -1,0 +1,19 @@
+@dein-PC mit virtualbox installiert
+
+In diesem ordner:
+
+vagrant up
+vagrant ssh # into the machine
+
+cd share # this is the same as ./share
+cd webserver
+
+# build the image
+sudo docker build -t webserver1 .
+sudo docker run -p 80:80 -d webserver1
+
+# rebuild the image (like after a security update)
+
+vagrant halt # to stop the VM
+
+vagrant destroy # to delete the VM if you hate it
